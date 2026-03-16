@@ -30,10 +30,10 @@ require_once 'db.php';
         <div class="form-box">
             <h3>Новый заказ</h3>
             <form action="save.php" method="POST">
-                <input type="text" name="client_name" placeholder="Клиент" required style="width:90%; margin-bottom:5px;"><br>
-                <input type="text" name="dish" placeholder="Блюдо" required style="width:90%; margin-bottom:5px;"><br>
-                <input type="text" name="chef" placeholder="Повар" required style="width:90%; margin-bottom:5px;"><br>
-                <input type="number" name="quantity" value="1" min="1" required style="width:90%; margin-bottom:5px;"><br>
+                <input type="text" name="client_name" maxlength="255" placeholder="Клиент" required style="width:90%; margin-bottom:5px;"><br>
+                <input type="text" name="dish" maxlength="255" placeholder="Блюдо" required style="width:90%; margin-bottom:5px;"><br>
+                <input type="text" name="chef" maxlength="255" placeholder="Повар" required style="width:90%; margin-bottom:5px;"><br>
+                <input type="number" name="quantity" value="1" min="1" max="2147483647" required style="width:90%; margin-bottom:5px;"><br>
                 <button type="submit" style="background: green; color: white; border: none; padding: 10px; width: 95%;">Отправить в БД</button>
             </form>
         </div>
