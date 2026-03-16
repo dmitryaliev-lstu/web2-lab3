@@ -1,0 +1,36 @@
+services:
+  php:
+    build: .
+    container_name: php-app
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "18085:80"
+    environment:
+      MYSQL_HOST: ${DB_HOST}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+  
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    ports:
+      - "13309:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "18086:80"
+    environment:
+      PMA_HOST: ${DB_HOST}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  db_data:
